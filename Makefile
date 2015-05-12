@@ -78,33 +78,36 @@ references : $(REFS)HMP_MOCK.v35.fasta $(REFS)trainset10_082014.v35.tax $(REFS)t
 RAW = data/raw/
 #need to pull the data off of the mothur server
 
-$(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD9SPZN01.sff.bz2
-	bunzip2 $(RAW)/HD9SPZN01.sff.bz2
-	wget -N -P data/raw/ http://www.mothur.org/CDI_MicrobiomeModeling/HD9SPZN01.oligos
+$(RAW)/%.sff :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/$@.bz2
+	bunzip2 $@.bz2
 
-$(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.sff.bz2
-	bunzip2 $(RAW)/HD7UIAO01.sff.bz2
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.oligos
-
-$(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.sff.bz2
-	bunzip2 $(RAW)/HJKE73L01.sff.bz2
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.oligos
-
-$(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.sff.bz2
-	bunzip2 $(RAW)/HLFAWTL01.sff.bz2
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.oligos
-
-$(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.sff.bz2
-	bunzip2 $(RAW)/HLFAWTL02.sff.bz2
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.oligos
+$(RAW)/%.oligos :
+	wget -N -P data/raw/ http://www.mothur.org/CDI_MicrobiomeModeling/$@
 
 $(RAW)/MIMARKS_cdclinical.xlsx :
-	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/MIMARKS_cdclinical.xlsx
+		wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/MIMARKS_cdclinical.xlsx
+
+#$(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos :
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.sff.bz2
+#	bunzip2 $(RAW)/HD7UIAO01.sff.bz2
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.oligos
+
+#$(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos :
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.sff.bz2
+#	bunzip2 $(RAW)/HJKE73L01.sff.bz2
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.oligos
+
+#$(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos :
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.sff.bz2
+#	bunzip2 $(RAW)/HLFAWTL01.sff.bz2
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.oligos
+
+#$(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos :
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.sff.bz2
+#	bunzip2 $(RAW)/HLFAWTL02.sff.bz2
+#	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.oligos
+
 
 get_raw_data : $(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos\
 				$(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos\
