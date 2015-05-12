@@ -67,36 +67,62 @@ $(REFS)HMP_MOCK.v35.fasta : $(REFS)HMP_MOCK.fasta $(REFS)silva.v35.align
 	rm $(REFS)HMP_MOCK.align.report;\
 	rm $(REFS)HMP_MOCK.flip.accnos
 
+references : $(REFS)HMP_MOCK.v35.fasta $(REFS)trainset10_082014.v35.tax $(REFS)trainset10_082014.v35.fasta $(REFS)silva.v35.align
 
 ################################################################################
 #
-#	Part 2: Run data through mothur
-#
+#	Part 2: Get raw data
 #
 ################################################################################
 
+RAW = data/raw/
+#need to pull the data off of the mothur server
 
-# build the files file. probably should replace this chunk eventually
-# with pulling data off of the SRA
-data/mothur/abx_time.files : code/make_files_file.R data/mothur/abx_cdiff_metadata.tsv
-	R -e "source('code/make_files_file.R')"
+$(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD9SPZN01.sff.bz2
+	bunzip2 $(RAW)/HD9SPZN01.sff.bz2
+	wget -N -P data/raw/ http://www.mothur.org/CDI_MicrobiomeModeling/HD9SPZN01.oligos
+
+$(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.sff.bz2
+	bunzip2 $(RAW)/HD7UIAO01.sff.bz2
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HD7UIAO01.oligos
+
+$(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.sff.bz2
+	bunzip2 $(RAW)/HJKE73L01.sff.bz2
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HJKE73L01.oligos
+
+$(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.sff.bz2
+	bunzip2 $(RAW)/HLFAWTL01.sff.bz2
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL01.oligos
+
+$(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.sff.bz2
+	bunzip2 $(RAW)/HLFAWTL02.sff.bz2
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/HLFAWTL02.oligos
+
+$(RAW)/MIMARKS_cdclinical.xlsx :
+	wget -N -P $(RAW) http://www.mothur.org/CDI_MicrobiomeModeling/MIMARKS_cdclinical.xlsx
+
+get_raw_data : $(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos\
+				$(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos\
+				$(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos\
+				$(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos\
+				$(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos\
+				$(RAW)/MIMARKS_cdclinical.xlsx
 
 
-# need to get the fastq files. probably should replace this chunk eventually
-# with pulling data off of the SRA
-data/raw/get_data : code/get_fastqs.sh data/mothur/abx_time.files
-	bash code/get_fastqs.sh data/mothur/abx_time.files;\
-	touch data/raw/get_data
+################################################################################
+#
+#	Part 3: Run data through mothur
+#
+################################################################################
+
 
 BASIC_STEM = data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster
 
-
-# need to get the CFU on the day after antibiotic treatment along with the
-# part of the experiment that each sample belongs to
-
-#data/mothur/abxD1.counts : code/make_counts_file.R data/mothur/abx_time.files\
-#							data/mothur/abx_cdiff_metadata.tsv
-#	R -e "source('code/make_counts_file.R')"
 
 
 # here we go from the raw fastq files and the files file to generate a fasta,
@@ -158,6 +184,13 @@ $(BASIC_STEM).pick.pick.pick.error.summary : code/get_error.batch\
 # rarefy the number of reads to 1625 sequences per library for the barcarts
 $(BASIC_STEM).pick.v35.wang.pick.pick.tx.5.subsample.shared : $(BASIC_STEM).pick.v35.wang.pick.pick.tx.shared
 		mothur "#sub.sample(shared=$^, size=1625)";
+
+
+################################################################################
+#
+#	Part 4: Write the paper
+#
+################################################################################
 
 
 write.paper : $(BASIC_STEM).pick.pick.pick.an.unique_list.0.03.subsample.shared\
