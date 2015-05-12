@@ -120,7 +120,7 @@ get_raw_data : $(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos\
 #
 ################################################################################
 
-MOTHUR = data/mothur/
+MOTHUR = data/mothur
 
 # here we denoise the data by running each sff file through sffinfo, trim.flows,
 # shhh.flows, trim.seqs, and unique.seqs. We produce the denoised fasta, names,
