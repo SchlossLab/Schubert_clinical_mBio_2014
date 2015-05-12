@@ -25,7 +25,7 @@ mothur "#sffinfo(sff=$STUB.sff, inputdir=$RAW_DIR/, outputdir=$MOTHUR_DIR/);
         set.dir(input=$MOTHUR_DIR, output=$MOTHUR_DIR);
         trim.flows(flow=current, oligos=$RAW_DIR/$STUB.oligos, pdiffs=2, bdiffs=1, processors=8);
         shhh.flows(file=$STUB.flow.files);
-        trim.seqs(fasta=current, name=current, oligos=current, pdiffs=2, bdiffs=1, maxhomop=8, minlength=200, flip=T);
+        trim.seqs(fasta=$STUB.shhh.fasta, name=$STUB.shhh.names, oligos=current, pdiffs=2, bdiffs=1, maxhomop=8, minlength=200, flip=T);
         unique.seqs(fasta=current, name=current)"
 
 # garbage collection:
