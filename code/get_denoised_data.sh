@@ -21,7 +21,7 @@ STUB=$1
 RAW_DIR=data/raw/
 MOTHUR_DIR=data/mothur/
 
-mothur "#sffinfo(sff=$SFF.sff, inputdir=$RAW_DIR, outputdir=$MOTHUR_DIR);
+mothur "#sffinfo(sff=$STUB.sff, inputdir=$RAW_DIR, outputdir=$MOTHUR_DIR);
         set.dir(input=data/mothur, output=data/mothur);
         trim.flows(flow=current, oligos=data/raw/$STUB.oligos, pdiffs=2, bdiffs=1, processors=8);
         shhh.flows(file=current);
