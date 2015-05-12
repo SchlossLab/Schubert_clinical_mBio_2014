@@ -12,11 +12,9 @@
 #   * the sff file and oligos file need to be in data/raw
 #
 # output:
-#   * fasta, group, and names file corresponding to the denoised data
+#   * fasta and names file corresponding to the denoised data
 #
 ################################################################################
-
-
 
 STUB=$1
 
@@ -30,12 +28,25 @@ mothur "#sffinfo(sff=$SFF.sff, inputdir=$RAW_DIR, outputdir=$MOTHUR_DIR);
         trim.seqs(fasta=current, name=current, oligos=current, pdiffs=2, bdiffs=1, maxhomop=8, minlength=200, flip=T);
         unique.seqs(fasta=current, name=current)"
 
-#TEMP=$(echo $F_FASTQ | sed -e s/raw/process/)
-#CONTIG_FASTA=$(echo $TEMP | sed -e s/fastq/trim.contigs.fasta/)
-#CONTIG_REPORT=$(echo $TEMP | sed -e s/fastq/contigs.report/)
+# garbage collection:
+rm data/mothur/$STUB.flow
+rm data/mothur/$STUB.fasta
+rm data/mothur/$STUB.qual
 
+rm data/mothur/$STUB.trim.flow
+rm data/mothur/$STUB.scrap.flow
+rm data/mothur/$STUB.*.flow
+rm data/mothur/$STUB.flow.files
 
-#   delete:
-#   data/mothur/HD7UIAO01.trim.flow
-#   data/mothur/HD7UIAO01.scrap.flow
-#   data/mothur/HD7UIAO01.DA*.flow
+rm data/mothur/$STUB.*.shhh.fasta
+rm data/mothur/$STUB.*.shhh.names
+rm data/mothur/$STUB.*.shhh.counts
+rm data/mothur/$STUB.*.shhh.groups
+rm data/mothur/$STUB.*.shhh.qual
+rm data/mothur/$STUB.shhh.fasta
+rm data/mothur/$STUB.shhh.names
+
+rm data/mothur/$STUB.shhh.trim.fasta
+rm data/mothur/$STUB.shhh.scrap.fasta
+rm data/mothur/$STUB.shhh.trim.names
+rm data/mothur/$STUB.shhh.scrap.names
