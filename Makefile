@@ -47,7 +47,7 @@ $(REFS)trainset10_082014.v35.tax $(REFS)trainset10_082014.v35.fasta : \
 						$(REFS)trainset10_082014.pds.fasta \
 						$(REFS)silva.v35.align
 	mothur "#align.seqs(fasta=$(REFS)trainset10_082014.pds.fasta, reference=$(REFS)silva.v35.align, processors=8);\
-		screen.seqs(fasta=current, taxonomy=$(REFS)trainset10_082014.pds.tax, start=1968, end=11550);\
+		screen.seqs(fasta=current, taxonomy=$(REFS)trainset10_082014.pds.tax, start=1, end=21271);\
 		degap.seqs(fasta=current)"; \
 	mv $(REFS)trainset10_082014.pds.good.ng.fasta $(REFS)trainset10_082014.v35.fasta; \
 	mv $(REFS)trainset10_082014.pds.good.tax $(REFS)trainset10_082014.v35.tax;\
