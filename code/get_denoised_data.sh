@@ -18,35 +18,35 @@
 
 STUB=$1
 
-RAW_DIR=data/raw/
-MOTHUR_DIR=data/mothur/
+RAW_DIR=data/raw
+MOTHUR_DIR=data/mothur
 
-mothur "#sffinfo(sff=$STUB.sff, inputdir=$RAW_DIR, outputdir=$MOTHUR_DIR);
-        set.dir(input=data/mothur, output=data/mothur);
-        trim.flows(flow=current, oligos=data/raw/$STUB.oligos, pdiffs=2, bdiffs=1, processors=8);
-        shhh.flows(file=current);
+mothur "#sffinfo(sff=$STUB.sff, inputdir=$RAW_DIR/, outputdir=$MOTHUR_DIR/);
+        set.dir(input=$MOTHUR_DIR, output=$MOTHUR_DIR);
+        trim.flows(flow=current, oligos=$RAW_DIR/$STUB.oligos, pdiffs=2, bdiffs=1, processors=8);
+        shhh.flows(file=$STUB.flow.files);
         trim.seqs(fasta=current, name=current, oligos=current, pdiffs=2, bdiffs=1, maxhomop=8, minlength=200, flip=T);
         unique.seqs(fasta=current, name=current)"
 
 # garbage collection:
-rm data/mothur/$STUB.flow
-rm data/mothur/$STUB.fasta
-rm data/mothur/$STUB.qual
+rm $MOTHUR_DIR/$STUB.flow
+rm $MOTHUR_DIR/$STUB.fasta
+rm $MOTHUR_DIR/$STUB.qual
 
-rm data/mothur/$STUB.trim.flow
-rm data/mothur/$STUB.scrap.flow
-rm data/mothur/$STUB.*.flow
-rm data/mothur/$STUB.flow.files
+rm $MOTHUR_DIR/$STUB.trim.flow
+rm $MOTHUR_DIR/$STUB.scrap.flow
+rm $MOTHUR_DIR/$STUB.*.flow
+rm $MOTHUR_DIR/$STUB.flow.files
 
-rm data/mothur/$STUB.*.shhh.fasta
-rm data/mothur/$STUB.*.shhh.names
-rm data/mothur/$STUB.*.shhh.counts
-rm data/mothur/$STUB.*.shhh.groups
-rm data/mothur/$STUB.*.shhh.qual
-rm data/mothur/$STUB.shhh.fasta
-rm data/mothur/$STUB.shhh.names
+rm $MOTHUR_DIR/$STUB.*.shhh.fasta
+rm $MOTHUR_DIR/$STUB.*.shhh.names
+rm $MOTHUR_DIR/$STUB.*.shhh.counts
+rm $MOTHUR_DIR/$STUB.*.shhh.groups
+rm $MOTHUR_DIR/$STUB.*.shhh.qual
+rm $MOTHUR_DIR/$STUB.shhh.fasta
+rm $MOTHUR_DIR/$STUB.shhh.names
 
-rm data/mothur/$STUB.shhh.trim.fasta
-rm data/mothur/$STUB.shhh.scrap.fasta
-rm data/mothur/$STUB.shhh.trim.names
-rm data/mothur/$STUB.shhh.scrap.names
+rm $MOTHUR_DIR/$STUB.shhh.trim.fasta
+rm $MOTHUR_DIR/$STUB.shhh.scrap.fasta
+rm $MOTHUR_DIR/$STUB.shhh.trim.names
+rm $MOTHUR_DIR/$STUB.shhh.scrap.names
