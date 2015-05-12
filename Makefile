@@ -127,19 +127,19 @@ MOTHUR = data/mothur/
 # and groups file. These will take a while to run in series, probably best to
 # run them separately in parallel.
 
-$(MOTHUR)/HD9SPZN01.fasta $(MOTHUR)/HD9SPZN01.names $(MOTHUR)/HD9SPZN01.groups : code/get_denoised_data.sh $(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos
+$(MOTHUR)/HD9SPZN01.shhh.trim.unique.fasta $(MOTHUR)/HD9SPZN01.shhh.trim.unique.names $(MOTHUR)/HD9SPZN01.shhh.groups : code/get_denoised_data.sh $(RAW)/HD9SPZN01.sff $(RAW)/HD9SPZN01.oligos
 	sh code/get_denoised_data.sh HD9SPZN01
 
-$(MOTHUR)/HD7UIAO01.fasta $(MOTHUR)/HD7UIAO01.names $(MOTHUR)/HD7UIAO01.groups : code/get_denoised_data.sh $(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos
+$(MOTHUR)/HD7UIAO01.shhh.trim.unique.fasta $(MOTHUR)/HD7UIAO01.shhh.trim.unique.names $(MOTHUR)/HD7UIAO01.shhh.groups : code/get_denoised_data.sh $(RAW)/HD7UIAO01.sff $(RAW)/HD7UIAO01.oligos
 	sh code/get_denoised_data.sh HD7UIAO01
 
-$(MOTHUR)/HJKE73L01.fasta $(MOTHUR)/HJKE73L01.names $(MOTHUR)/HJKE73L01.groups : code/get_denoised_data.sh $(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos
+$(MOTHUR)/HJKE73L01.shhh.trim.unique.fasta $(MOTHUR)/HJKE73L01.shhh.trim.unique.names $(MOTHUR)/HJKE73L01.shhh.groups : code/get_denoised_data.sh $(RAW)/HJKE73L01.sff $(RAW)/HJKE73L01.oligos
 	sh code/get_denoised_data.sh HJKE73L01
 
-$(MOTHUR)/HLFAWTL01.fasta $(MOTHUR)/HLFAWTL01.names $(MOTHUR)/HLFAWTL01.groups : code/get_denoised_data.sh $(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos
+$(MOTHUR)/HLFAWTL01.shhh.trim.unique.fasta $(MOTHUR)/HLFAWTL01.shhh.trim.unique.names $(MOTHUR)/HLFAWTL01.shhh.groups : code/get_denoised_data.sh $(RAW)/HLFAWTL01.sff $(RAW)/HLFAWTL01.oligos
 	sh code/get_denoised_data.sh HLFAWTL01
 
-$(MOTHUR)/HLFAWTL02.fasta $(MOTHUR)/HLFAWTL02.names $(MOTHUR)/HLFAWTL02.groups : code/get_denoised_data.sh $(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos
+$(MOTHUR)/HLFAWTL02.shhh.trim.unique.fasta $(MOTHUR)/HLFAWTL02.shhh.trim.unique.names $(MOTHUR)/HLFAWTL02.shhh.groups : code/get_denoised_data.sh $(RAW)/HLFAWTL02.sff $(RAW)/HLFAWTL02.oligos
 	sh code/get_denoised_data.sh HLFAWTL02
 
 
@@ -158,11 +158,11 @@ $(MOTHUR)/clinical.names : $(MOTHUR)/HD9SPZN01.shhh.trim.unique.names\
 							$(MOTHUR)/HLFAWTL02.shhh.trim.unique.names
 	cat $? > $@
 
-$(MOTHUR)/clinical.groups : $(MOTHUR)/HD9SPZN01.shhh.trim.unique.groups\
-							$(MOTHUR)/HD7UIAO01.shhh.trim.unique.groups\
-							$(MOTHUR)/HJKE73L01.shhh.trim.unique.groups\
-							$(MOTHUR)/HLFAWTL01.shhh.trim.unique.groups\
-							$(MOTHUR)/HLFAWTL02.shhh.trim.unique.groups
+$(MOTHUR)/clinical.groups : $(MOTHUR)/HD9SPZN01.shhh.groups\
+							$(MOTHUR)/HD7UIAO01.shhh.groups\
+							$(MOTHUR)/HJKE73L01.shhh.groups\
+							$(MOTHUR)/HLFAWTL01.shhh.groups\
+							$(MOTHUR)/HLFAWTL02.shhh.groups
 	cat $? > $@
 
 
