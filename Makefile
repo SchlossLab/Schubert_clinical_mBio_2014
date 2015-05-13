@@ -205,9 +205,9 @@ $(BASIC_STEM).pick.pick.pick.an.unique_list.shared $(BASIC_STEM).pick.pick.pick.
 										$(BASIC_STEM).pick.pick.fasta\
 										$(BASIC_STEM).pick.v35.wang.pick.taxonomy
 	mothur code/get_shared_otus.batch;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.pick.count_table;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.pick.v35.wang.pick.pick.taxonomy;\
+	rm $(BASIC_STEM).uchime.pick.pick.pick.count_table;\
+	rm $(BASIC_STEM).pick.pick.pick.fasta;\
+	rm $(BASIC_STEM).pick.v35.wang.pick.pick.taxonomy;\
 	rm data/mothur/*.an.*rabund
 
 
@@ -219,9 +219,9 @@ $(BASIC_STEM).pick.v35.wang.pick.pick.tx.5.cons.taxonomy $(BASIC_STEM).pick.v35.
 										$(BASIC_STEM).pick.pick.fasta\
 										$(BASIC_STEM).pick.v35.wang.pick.taxonomy
 	mothur code/get_shared_phyla.batch;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.pick.count_table;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta;\
-	rm data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster.pick.v35.wang.pick.pick.taxonomy;\
+	rm $(BASIC_STEM).uchime.pick.pick.pick.count_table;\
+	rm $(BASIC_STEM).pick.pick.pick.fasta;\
+	rm $(BASIC_STEM).pick.v35.wang.pick.pick.taxonomy;\
 	rm data/mothur/*.tx.*rabund;
 
 
