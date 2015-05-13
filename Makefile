@@ -181,15 +181,16 @@ $(BASIC_STEM).uchime.pick.pick.count_table $(BASIC_STEM).pick.pick.fasta $(BASIC
 										$(REFS)trainset10_082014.v35.fasta\
 										$(REFS)trainset10_082014.v35.tax
 	mothur code/get_good_seqs.batch;\
-	rm $(MOTHUR)/*.unique.fasta
-	rm $(MOTHUR)/*.unique.names
-	rm $(MOTHUR)/*.unique.count_table
-	rm $(MOTHUR)/*.align*
-	rm $(MOTHUR)/*.accnos
+	rm $(MOTHUR)/clinical*.unique.fasta
+	rm $(MOTHUR)/clinical*.unique.names
+	rm $(MOTHUR)/clinical*.unique.count_table
+	rm $(MOTHUR)/clinical*.align*
+	rm $(MOTHUR)/clinical*.accnos
 	rm $(MOTHUR)/clinical.unique.good.count_table
+	rm $(MOTHUR)/clinical.unique.good.filter
 	rm $(MOTHUR)/clinical.unique.good.filter.fasta
 	rm $(MOTHUR)/clinical.unique.good.filter.count_table
-	rm $(MOTHUR)/*.map
+	rm $(MOTHUR)/clinical*.map
 	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.count_table
 	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.fasta
 	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.uchime.chimeras
