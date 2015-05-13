@@ -172,18 +172,31 @@ denoise_merge_data : $(MOTHUR)/clinical.fasta $(MOTHUR)/clinical.names $(MOTHUR)
 BASIC_STEM = data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster
 
 
-# here we go from the raw fastq files and the files file to generate a fasta,
-# taxonomy, and count_table file that has had the chimeras removed as well as
-# any non bacterial sequences
+# here we go from the denoised fasta, names, and groups files to generate a
+# fasta, taxonomy, and count_table file that has had the chimeras removed as
+# well as any non bacterial sequences
 $(BASIC_STEM).uchime.pick.pick.count_table $(BASIC_STEM).pick.pick.fasta $(BASIC_STEM).pick.v35.wang.pick.taxonomy : code/get_good_seqs.batch\
-										data/raw/get_data\
+										denoise_merge_data\
 										data/references/silva.v35.align\
 										data/references/trainset10_082014.v35.fasta\
 										data/references/trainset10_082014.v35.tax
 	mothur code/get_good_seqs.batch;\
-	rm data/mothur/*.map
-
-
+	rm $(MOTHUR)/*.unique.fasta
+	rm $(MOTHUR)/*.unique.names
+	rm $(MOTHUR)/*.unique.count_table
+	rm $(MOTHUR)/*.align*
+	rm $(MOTHUR)/*.accnos
+	rm $(MOTHUR)/clinical.unique.good.count_table
+	rm $(MOTHUR)/clinical.unique.good.filter.fasta
+	rm $(MOTHUR)/clinical.unique.good.filter.count_table
+	rm $(MOTHUR)/*.map
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.count_table
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.fasta
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.uchime.chimeras
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.uchime.pick.count_table
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.pick.fasta
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.pick.v35.wang.tax.summary
+	rm $(MOTHUR)/clinical.unique.good.filter.unique.precluster.pick.v35.wang.taxonomy
 
 # here we go from the good sequences and generate a shared file and a
 # cons.taxonomy file based on OTU data
