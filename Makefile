@@ -166,7 +166,7 @@ $(MOTHUR)/clinical.groups : $(MOTHUR)/HD9SPZN01.shhh.groups\
 	cat $? > $@
 
 
-
+denoise_merge_data : $(MOTHUR)/clinical.fasta $(MOTHUR)/clinical.names $(MOTHUR)/clinical.groups
 
 
 BASIC_STEM = data/mothur/abx_time.trim.contigs.good.unique.good.filter.unique.precluster
