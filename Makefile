@@ -166,9 +166,6 @@ $(MOTHUR)/clinical.groups : $(MOTHUR)/HD9SPZN01.shhh.groups\
 	cat $? > $@
 
 
-denoise_merge_data : $(MOTHUR)/clinical.fasta $(MOTHUR)/clinical.names $(MOTHUR)/clinical.groups
-
-
 BASIC_STEM = $(MOTHUR)/clinical.unique.good.filter.unique.precluster
 
 
@@ -176,7 +173,9 @@ BASIC_STEM = $(MOTHUR)/clinical.unique.good.filter.unique.precluster
 # fasta, taxonomy, and count_table file that has had the chimeras removed as
 # well as any non bacterial sequences
 $(BASIC_STEM).uchime.pick.pick.count_table $(BASIC_STEM).pick.pick.fasta $(BASIC_STEM).pick.v35.wang.pick.taxonomy : code/get_good_seqs.batch\
-										denoise_merge_data\
+										$(MOTHUR)/clinical.fasta\
+										$(MOTHUR)/clinical.groups\
+										$(MOTHUR)/clinical.names\
 										$(REFS)silva.v35.align\
 										$(REFS)trainset10_082014.v35.fasta\
 										$(REFS)trainset10_082014.v35.tax
