@@ -187,7 +187,7 @@ $(BASIC_STEM).uchime.pick.pick.count_table $(BASIC_STEM).pick.pick.fasta $(BASIC
 	rm $(MOTHUR)/clinical*.align*
 	rm $(MOTHUR)/clinical*.accnos
 	rm $(MOTHUR)/clinical.unique.good.count_table
-	rm $(MOTHUR)/clinical.unique.good.filter
+	rm $(MOTHUR)/clinical.filter
 	rm $(MOTHUR)/clinical.unique.good.filter.fasta
 	rm $(MOTHUR)/clinical.unique.good.filter.count_table
 	rm $(MOTHUR)/clinical*.map
