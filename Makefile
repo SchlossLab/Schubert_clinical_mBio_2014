@@ -192,7 +192,7 @@ $(BASIC_STEM).denovo.uchime.pick.pick.count_table $(BASIC_STEM).pick.pick.fasta 
 
 # here we go from the good sequences and generate a shared file and a
 # cons.taxonomy file based on OTU data
-$(BASIC_STEM).pick.pick.pick.an.unique_list.shared $(BASIC_STEM).pick.pick.pick.an.unique_list.0.03.cons.taxonomy : code/get_shared_otus.sh\
+$(BASIC_STEM).pick.pick.pick.opti_mcc.shared $(BASIC_STEM).pick.pick.pick.opti_mcc.0.03.cons.taxonomy $(BASIC_STEM).pick.pick.pick.no_extra.fasta $(BASIC_STEM).denovo.uchime.pick.pick.pick.no_extra.count_table : code/get_shared_otus.sh\
 										$(BASIC_STEM).denovo.uchime.pick.pick.count_table\
 										$(BASIC_STEM).pick.pick.fasta\
 										$(BASIC_STEM).pick.v35.wang.pick.taxonomy
@@ -212,12 +212,21 @@ $(BASIC_STEM).pick.pick.pick.error.summary : code/get_error.sh\
 data/process/schubert.shared.gz: $(BASIC_STEM).pick.pick.pick.opti_mcc.shared
 	gzip < $^ > $@
 
-data/process/schubert.cons.taxonomy: $(BASIC_STEM).pick.pick.pick.opti_mcc.0.03.cons.taxonomy
-	cp $^ $@
+data/process/schubert.cons.taxonomy.gz : $(BASIC_STEM).pick.pick.pick.opti_mcc.0.03.cons.taxonomy
+	gzip < $^ > $@
+
+data/process/schubert.fasta.gz: $(BASIC_STEM).pick.pick.pick.no_extra.fasta
+	gzip < $^ > $@
+
+data/process/schubert.count_table.gz: $(BASIC_STEM).denovo.uchime.pick.pick.pick.no_extra.count_table
+	gzip < $^ > $@
 
 data/process/schubert.metadata.xlsx : $(RAW)/MIMARKS_cdclinical.xlsx
 	cp $^ $@
 
+final_files : data/process/schubert.shared.gz data/process/schubert.cons.taxonomy.gz\
+		data/process/schubert.fasta.gz data/process/schubert.count_table.gz\
+		data/process/schubert.metadata.xlsx
 
 ################################################################################
 #

@@ -8,8 +8,9 @@ mothur "#set.current(inputdir=$MOTHUR, outputdir=$MOTHUR, processors=8);
   make.shared(list=current, count=current, label=0.03);
   classify.otu(list=current, count=current, taxonomy=current, label=0.03)"
 
-rm $BASIC_STEM.denovo.uchime.pick.pick.pick.count_table
-rm $BASIC_STEM.pick.pick.pick.fasta
+mv $BASIC_STEM.denovo.uchime.pick.pick.pick.count_table $BASIC_STEM.denovo.uchime.pick.pick.pick.no_extra.count_table
+mv $BASIC_STEM.pick.pick.pick.fasta $BASIC_STEM.pick.pick.pick.no_extra.fasta
+
 rm $BASIC_STEM.pick.v35.wang.pick.pick.taxonomy
 rm $BASIC_STEM.pick.pick.pick.opti_mcc.0.03.cons.tax.summary
 rm $BASIC_STEM.pick.pick.pick.opti_mcc.steps
