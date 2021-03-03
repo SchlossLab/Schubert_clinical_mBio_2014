@@ -1,5 +1,0 @@
-set.current(inputdir=data/mothur, outputdir=data/mothur, processors=8)
-remove.groups(count=clinical.unique.good.filter.unique.precluster.uchime.pick.pick.count_table, fasta=clinical.unique.good.filter.unique.precluster.pick.pick.fasta, taxonomy=clinical.unique.good.filter.unique.precluster.pick.v35.wang.pick.taxonomy, groups=HD7UIAO01.MOCK-HD9SPZN01.MOCK-HJKE73L01.MOCK-HLFAWTL01.MOCK-HLFAWTL02.MOCK-HD7UIAO01.GD-HD9SPZN01.GD-HJKE73L01.GD-HLFAWTL01.GD-HLFAWTL02.GD)
-cluster.split(fasta=current, count=current, taxonomy=current, splitmethod=classify, taxlevel=4)
-make.shared(list=current, count=current, label=0.03)
-classify.otu(list=current, count=current, taxonomy=current, label=0.03)
